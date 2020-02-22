@@ -1,0 +1,4 @@
+class ResponseHasError(Exception):
+    """
+    """
+    pass
