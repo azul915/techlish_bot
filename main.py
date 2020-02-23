@@ -18,5 +18,5 @@ try:
     logging.info("Write created_at")
 
 except ResponseHasError as e:
-    logging.warn(e.args[0])
+    logging.warning(e.args[0])
     sys.exit()
