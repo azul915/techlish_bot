@@ -8,7 +8,7 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 import config
-import cred
+import settings
 
 
 def sheet():
@@ -20,15 +20,15 @@ def sheet():
 
     credential_info = {
                 "type": config.SERVICE_ACCOUNT,
-                "project_id": cred.SHEET_PROJECT_ID,
-                "private_key_id": cred.SHEET_PRIVATE_KEY_ID,
-                "private_key": cred.SHEET_PRIVATE_KEY,
-                "client_email": cred.SHEET_CLIENT_EMAIL,
-                "client_id": cred.SHEET_CLIENT_ID,
+                "project_id": settings.SHEET_PROJECT_ID,
+                "private_key_id": settings.SHEET_PRIVATE_KEY_ID,
+                "private_key": settings.SHEET_PRIVATE_KEY.replace('\\n', '\n'),
+                "client_email": settings.SHEET_CLIENT_EMAIL,
+                "client_id": settings.SHEET_CLIENT_ID,
                 "auth_uri": config.AUTH_URI,
                 "token_uri": config.TOKEN_URI,
                 "auth_provider_x509_cert_url": config.AUTH_PROVIDER_X509_CERT_URL,
-                "client_x509_cert_url": cred.SHEET_CLIENT_X509_CERT_URL
+                "client_x509_cert_url": settings.SHEET_CLIENT_X509_CERT_URL
     }
 
     credentials = ServiceAccountCredentials.from_json_keyfile_dict(credential_info, scope)

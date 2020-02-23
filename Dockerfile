@@ -1,5 +1,6 @@
 FROM python:3.8-alpine
 
+ENV PYTHONDONTWRITEBYTECODE=1
 WORKDIR /app
 
 RUN set -ex && \
@@ -8,7 +9,6 @@ RUN set -ex && \
 
 COPY main.py .
 COPY config.py .
-COPY cred.py .
 COPY gspread_sheet.py .
 COPY twitter.py .
 COPY error.py .

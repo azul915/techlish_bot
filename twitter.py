@@ -12,13 +12,13 @@ import pytz
 from requests_oauthlib import OAuth1Session
 
 import config
-import cred
+import settings
 from error import ResponseHasError
 
-CK = cred.CONSUMER_KEY
-CS = cred.CONSUMER_SECRET
-AT = cred.ACCESS_TOKEN
-ATS = cred.ACCESS_TOKEN_SECRET
+CK = settings.CONSUMER_KEY
+CS = settings.CONSUMER_SECRET
+AT = settings.ACCESS_TOKEN
+ATS = settings.ACCESS_TOKEN_SECRET
 
 TIMEZONE = config.TIMEZONE
 FORMAT = config.FORMAT

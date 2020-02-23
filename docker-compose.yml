@@ -6,7 +6,8 @@ services:
       context: .
       dockerfile: ./Dockerfile
     container_name: techlish
-    #stdin_open: true
-    #tty: true
-    # volumes:
-    #   - ./:/app
+    env_file: .env
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./:/app
