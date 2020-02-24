@@ -56,6 +56,7 @@ def tweet(rn_c) -> Dict[str, str]:
     if res.status_code != 200:
 
         err_message = res_dict['errors'][0]['message']
+        print(err_message)
         raise ResponseHasError(err_message)
 
     else:

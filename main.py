@@ -10,6 +10,8 @@ from error import ResponseHasError
 
 row_num_content = gspread_sheet.get_row_num_and_formatted_content()
 
+# def execute():
+# for GCP entry point
 def execute(event, context):
     try:
         result_dict = twitter.tweet(row_num_content)
@@ -21,3 +23,5 @@ def execute(event, context):
     except ResponseHasError as e:
         logging.warning(e.args[0])
         sys.exit()
+
+#execute()
