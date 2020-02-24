@@ -10,13 +10,14 @@ from error import ResponseHasError
 
 row_num_content = gspread_sheet.get_row_num_and_formatted_content()
 
-try:
-    result_dict = twitter.tweet(row_num_content)
-    logging.info("Tweet Success")
+def execute(event, context):
+    try:
+        result_dict = twitter.tweet(row_num_content)
+        logging.info("Tweet Success")
 
-    gspread_sheet.write_timestamp(result_dict)
-    logging.info("Write created_at")
+        gspread_sheet.write_timestamp(result_dict)
+        logging.info("Write created_at")
 
-except ResponseHasError as e:
-    logging.warning(e.args[0])
-    sys.exit()
+    except ResponseHasError as e:
+        logging.warning(e.args[0])
+        sys.exit()
