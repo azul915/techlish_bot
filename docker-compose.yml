@@ -2,10 +2,10 @@ version: '3.4'
 
 services:
   app:
-    build: 
+    build:
       context: .
       dockerfile: ./Dockerfile
-    container_name: techlish
+    command: ["/bin/sh", "-c", "tail -f /dev/null"]
     env_file: .env
     stdin_open: true
     tty: true
