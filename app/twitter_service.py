@@ -22,6 +22,8 @@ class TwitterService:
         res = self.client.post(self.endpoint, params = t.content)
 
         res_dict = json.loads(res.text)
+        print(res_dict)
+        sys.exit(0)
         created_at = res_dict['created_at']
         st = time.strptime(created_at, config.TWITTER_FORMAT)
         utc_time = datetime.datetime(st.tm_year, st.tm_mon,st.tm_mday, \
