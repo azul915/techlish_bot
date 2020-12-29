@@ -18,8 +18,8 @@ jobs:
     - run:
         name: Authorize gcloud
         command: |
-          echo $SERVICE_ACCOUNT_KEY
           # echo $SERVICE_ACCOUNT_KEY | base64 --decode --ignore-garbage | gcloud auth activate-service-account --key-file=-
+          echo $SERVICE_ACCOUNT_KEY | base64 --decode
       # - run:
       #   name: Deploy to Google Cloud Functions
       #   command: |
