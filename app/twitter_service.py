@@ -22,7 +22,7 @@ class TwitterService:
         res = self.client.post(self.endpoint, params = t.content)
 
         res_dict = json.loads(res.text)
-        print(res_dict)
+        print(json.dumps(res_dict, indent=2))
         sys.exit(0)
         created_at = res_dict['created_at']
         st = time.strptime(created_at, config.TWITTER_FORMAT)
