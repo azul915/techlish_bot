@@ -25,17 +25,17 @@ jobs:
         command: |
           echo $ENV_FILE | base64 -d > .env.yaml
           cat .env.yaml
-          # gcloud functions deploy bot \
-          #   --entry-point handle_cloud_functions \
-          #   --runtime python37 \
-          #   --trigger-event providers/cloud.pubsub/eventTypes/topic.publish \
-          #   --trigger-resource twiceaday \
-          #   --source ./app/ \
-          #   --env-vars-file .env.yaml \
-          #   --project techlish \
-          #   --region us-central1 \
-          #   --memory 256MB \
-          #   --timeout 60s
+          gcloud functions deploy bot \
+            --entry-point handle_cloud_functions \
+            --runtime python37 \
+            --trigger-event providers/cloud.pubsub/eventTypes/topic.publish \
+            --trigger-resource twiceaday \
+            --source ./app/ \
+            --env-vars-file .env.yaml \
+            --project techlish \
+            --region us-central1 \
+            --memory 256MB \
+            --timeout 60s
 workflows:
   version: 2
   build-test-and-deploy:
