@@ -7,8 +7,9 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Zip
+          name: Zip scripts
           command: |
+            zip functions -r ./app
             ls -la
       # - run:
       #   name: Authorize gcloud
