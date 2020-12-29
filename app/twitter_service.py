@@ -23,8 +23,8 @@ class TwitterService:
 
         res_dict = json.loads(res.text)
         print(json.dumps(res_dict, indent=2))
-        sys.exit(0)
         created_at = res_dict['created_at']
+        print(created_at)
         st = time.strptime(created_at, config.TWITTER_FORMAT)
         utc_time = datetime.datetime(st.tm_year, st.tm_mon,st.tm_mday, \
             st.tm_hour,st.tm_min,st.tm_sec, tzinfo=datetime.timezone.utc)
