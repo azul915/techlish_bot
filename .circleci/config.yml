@@ -4,6 +4,16 @@ jobs:
   deploy:
     docker:
     - image: google/cloud-sdk:alpine
+    environment:
+      PROJECT: "techlish"
+      FUNCTION_NAME: "bot"
+      ENTRY_POINT: "handle_cloud_functions"
+      RUNTIME: "python37"
+      TRIGGER_EVENT: "providers/cloud.pubsub/eventTypes/topic.publish"
+      TRIGGER_RESOURCE: "twiceaday"
+      REGION: "us-central1"
+      MEMORY: "256MB"
+      TIMEOUT: "60s"
     steps:
     - checkout
     - run:
@@ -14,7 +24,6 @@ jobs:
         name: Zip scripts
         command: |
           zip functions -r ./app
-          ls -la
     - run:
         name: Authorize gcloud
         command: |
@@ -24,17 +33,17 @@ jobs:
         name: Deploy to Google Cloud Functions
         command: |
           echo $ENV_FILE | base64 -d > .env.yaml
-          gcloud functions deploy bot \
-            --entry-point handle_cloud_functions \
-            --runtime python37 \
-            --trigger-event providers/cloud.pubsub/eventTypes/topic.publish \
-            --trigger-resource twiceaday \
+          gcloud functions deploy $FUNCTION_NAME \
+            --entry-point $ENTRY_POINT \
+            --runtime $RUNTIME \
+            --trigger-event $TRIGGER_EVENT \
+            --trigger-resource $TRIGGER_RESOURCE \
             --source ./app/ \
             --env-vars-file .env.yaml \
-            --project techlish \
-            --region us-central1 \
-            --memory 256MB \
-            --timeout 60s
+            --project $PROJECT \
+            --region $REGION \
+            --memory $MEMORY \
+            --timeout $TIMEOUT
 workflows:
   version: 2
   build-test-and-deploy:
