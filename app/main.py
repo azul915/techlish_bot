@@ -9,9 +9,9 @@ import twitter_service as twi_service
 import config
 from error import ResponseHasError
 
-def handle_cloud_functions():
+# def handle_cloud_functions():
 # for GCP entry point
-# def handle_cloud_functions(event, context):
+def handle_cloud_functions(event, context):
     try:
         gspread_service = gs_service.GSpreadSheetService()
         record = gspread_service.choose_record()
