@@ -13,5 +13,6 @@ TECHLISH_SPREAD_SHEET = "Techlish"
 # twitter.py
 TIMEZONE = "Asia/Tokyo"
 FORMAT = "%Y/%m/%d %H:%M:%S"
+TWITTER_FORMAT = "%a %b %d %H:%M:%S +0000 %Y"
 
 TWITTER_POST_ENDPOINT = "https://api.twitter.com/1.1/statuses/update.json"
