@@ -1,0 +1,38 @@
+version: 2.1
+
+jobs:
+  deploy:
+    docker:
+    - image: google/cloud-sdk:latest
+    steps:
+    - checkout
+    - run:
+      name: Zip
+      command: |
+        ls -la
+    # - run:
+    #   name: Authorize gcloud
+    #   command: |
+    #     echo $SERVICE_ACCOUNT_KEY | base64 --decode | gcloud auth activate-service-account --key-file=-
+    # - run:
+    #   name: Deploy to Google Cloud Functions
+    #   command: |
+    #     gcloud functions deploy techlish \
+    #       --entry-point handle_cloud_functions \
+    #       --runtime python37 \
+    #       --trigger-topic twiceaday \
+    #       --source ./src/ \
+    #       --project techlish \
+    #       --region us-central1 \
+    #       --memory 256MB \
+    #       --timeout 60s
+
+workflows:
+  version: 2
+  build-test-and-deploy:
+    jobs:
+    - deploy:
+      filters:
+        branches:
+          only:
+          - master
