@@ -24,7 +24,6 @@ jobs:
         name: Deploy to Google Cloud Functions
         command: |
           echo $ENV_FILE | base64 -d > .env.yaml
-          cat .env.yaml
           gcloud functions deploy bot \
             --entry-point handle_cloud_functions \
             --runtime python37 \
