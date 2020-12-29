@@ -3,22 +3,23 @@ version: 2.1
 jobs:
   deploy:
     docker:
-      - image: google/cloud-sdk:alpine
+    - image: google/cloud-sdk:alpine
     steps:
-      - checkout
-      - run:
-          name: Priparing
-          command: |
-            apk --no-cache add zip
-      - run:
-          name: Zip scripts
-          command: |
-            zip functions -r ./app
-            ls -la
-      - run:
-          name: Authorize gcloud
-          command: |
-            echo $SERVICE_ACCOUNT_KEY | base64 --decode | gcloud auth activate-service-account --key-file=-
+    - checkout
+    - run:
+        name: Preparing
+        command: |
+          apk --no-cache add zip
+    - run:
+        name: Zip scripts
+        command: |
+          zip functions -r ./app
+          ls -la
+    - run:
+        name: Authorize gcloud
+        command: |
+          echo $SERVICE_ACCOUNT_KEY
+          echo $SERVICE_ACCOUNT_KEY | base64 --decode --ignore-garbage | gcloud auth activate-service-account --key-file=-
       # - run:
       #   name: Deploy to Google Cloud Functions
       #   command: |
