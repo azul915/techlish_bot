@@ -27,4 +27,4 @@ def handle_cloud_functions(event, context):
         logging.warning(e.args[0])
         sys.exit()
 
-handle_cloud_functions()
+# handle_cloud_functions()

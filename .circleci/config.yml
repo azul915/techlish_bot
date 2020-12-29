@@ -7,7 +7,7 @@ jobs:
     steps:
     - checkout
     - run:
-        name: Preparing
+        name: Prepare
         command: |
           apk --no-cache add zip
     - run:
@@ -23,7 +23,7 @@ jobs:
     - run:
         name: Deploy to Google Cloud Functions
         command: |
-          gcloud functions deploy techlish \
+          gcloud functions deploy bot \
             --entry-point handle_cloud_functions \
             --runtime python37 \
             --trigger-event providers/cloud.pubsub/eventTypes/topic.publish \
