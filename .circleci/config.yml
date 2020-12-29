@@ -3,9 +3,13 @@ version: 2.1
 jobs:
   deploy:
     docker:
-      - image: google/cloud-sdk:latest
+      - image: google/cloud-sdk:alpine
     steps:
       - checkout
+      - run:
+          name: Priparing
+          command: |
+            apk --no-cache add zip
       - run:
           name: Zip scripts
           command: |
