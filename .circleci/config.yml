@@ -26,7 +26,8 @@ jobs:
           gcloud functions deploy techlish \
             --entry-point handle_cloud_functions \
             --runtime python37 \
-            --trigger-topic twiceaday \
+            --trigger-event providers/cloud.pubsub/eventTypes/topic.publish
+            --trigger-resource twiceaday \
             --source ./app/ \
             --project techlish \
             --region us-central1 \
