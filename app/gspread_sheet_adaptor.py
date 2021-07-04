@@ -24,8 +24,9 @@ class GSpreadSheetAdapter:
         }
         creds = ServiceAccountCredentials.from_json_keyfile_dict(info, scope)
         gc = gspread.authorize(creds)
+        logging.info("gspread authrozed")
         sheet1_cli = gc.open(config.TECHLISH_SPREAD_SHEET).sheet1
-
+        logging.info("sheet1 found")
         if len(sheet1_cli.col_values(1)) == 0:
             logging.critical('The spreadsheet has no value in A columns.')
         else:

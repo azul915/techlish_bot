@@ -11,6 +11,7 @@ class GSpreadSheetService:
 
     def choose_record(self):
         records = self.adaptor.get_all_values()
+        logging.info("got all records")
         idx = random.randint(0, len(records)-1)
 
         str_num = str(idx + 1)
