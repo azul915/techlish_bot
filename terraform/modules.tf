@@ -3,7 +3,7 @@
 # ------------------------------------------------
 # Google Cloud Scheduler
 module "cloud_scheduler" {
-  source = "./modules/cloud_scheduler"
+  source = "github.com/azul915/TerraformModule/GCP/CloudScheduler"
 
   gcp_project                  = var.gcp_project
   region                       = var.region
@@ -26,11 +26,12 @@ data "google_service_account" "cloud_functions" {
 }
 
 module "cloud_functions_techlish" {
-  source = "./modules/cloud_functions"
+  source = "github.com/azul915/TerraformModule/GCP/CloudFunctions"
 
   gcp_project             = var.gcp_project
   region                  = var.region
   cloud_pubsub_topic_name = var.cloud_pubsub_topic_name
+  archive_dir_path = "../.out/functions.zip"
 
   cloud_functions_function_name         = var.cloud_functions_function_name
   cloud_functions_runtime               = var.cloud_functions_runtime
