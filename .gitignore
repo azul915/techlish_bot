@@ -1,2 +1,7 @@
 .env
 *.pyc
+.out
+terraform/.idea
+terraform/.terraform
+terraform/credentials
+terraform.tfvars
