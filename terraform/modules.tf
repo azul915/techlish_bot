@@ -10,7 +10,7 @@ module "cloud_scheduler" {
   cloud_scheduler_job_name     = var.cloud_scheduler_job_name
   cloud_scheduler_job_schedule = var.cloud_scheduler_job_schedule
   //  cloud_scheduler_pubsub_topic_id = module.cloud_functions_techlish.google_pubsub_topic_id
-  cloud_functions_pubsub_topic_id = "projects/techlish/topics/${var.cloud_pubsub_topic_name}"
+  cloud_functions_pubsub_topic_id = "projects/${var.gcp_project}/topics/${var.cloud_pubsub_topic_name}"
 }
 
 # ------------------------------------------------
