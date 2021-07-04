@@ -31,7 +31,7 @@ module "cloud_functions_techlish" {
   gcp_project             = var.gcp_project
   region                  = var.region
   cloud_pubsub_topic_name = var.cloud_pubsub_topic_name
-  archive_dir_path = "../.out/functions.zip"
+  archive_dir_path        = "../.out/functions.zip"
 
   cloud_functions_function_name         = var.cloud_functions_function_name
   cloud_functions_runtime               = var.cloud_functions_runtime

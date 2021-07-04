@@ -10,7 +10,7 @@ variable "region" {
 variable "gcp_project" {
   description = "Google Cloud Planform project name"
   type        = string
-  default = "techlish"
+  default     = "techlish"
 }
 
 # ------------------------------------------------
@@ -19,13 +19,13 @@ variable "gcp_project" {
 variable "cloud_scheduler_job_name" {
   description = "Google Cloud Scheduler job name"
   type        = string
-  default = "job-twice-a-day"
+  default     = "job-twice-a-day"
 }
 
 variable "cloud_scheduler_job_schedule" {
   description = "Google Cloud Scheduler job schedule"
   type        = string
-  default = "00 8,20 * * *"
+  default     = "00 8,20 * * *"
 }
 
 # ------------------------------------------------
@@ -42,7 +42,7 @@ variable "cloud_pubsub_topic_name" {
 variable "cloud_functions_function_name" {
   description = "Google Cloud Functions function name"
   type        = string
-  default = "tweet-and-write-speadsheet"
+  default     = "tweet-and-write-speadsheet"
 }
 
 variable "cloud_functions_runtime" {
@@ -54,19 +54,19 @@ variable "cloud_functions_runtime" {
 variable "cloud_functions_entry_point" {
   description = "Google Cloud Functions entry point"
   type        = string
-  default = "handle_cloud_functions"
+  default     = "handle_cloud_functions"
 }
 
 variable "cloud_functions_available_memory_mb" {
   description = "Google Cloud Functions available memory MB"
   type        = number
-  default = 128
+  default     = 128
 }
 
 variable "cloud_functions_timeout" {
   description = "Google Cloud Functions timeout"
   type        = number
-  default = 60
+  default     = 60
 }
 
 variable "cloud_functions_environment_variables" {
