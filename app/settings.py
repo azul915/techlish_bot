@@ -1,7 +1,9 @@
-import os
-from dotenv import load_dotenv
+#! /usr/bin/env python
+# coding: utf-8
 
-load_dotenv(verbose=True)
+import os
+
+DEBUG = os.environ['DEBUG']
 
 # twitter.py
 SHEET_PROJECT_ID = os.environ['SHEET_PROJECT_ID']

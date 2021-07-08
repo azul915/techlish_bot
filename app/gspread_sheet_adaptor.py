@@ -1,3 +1,4 @@
+#! /usr/bin/env python
 # coding: utf-8
 
 import gspread
@@ -5,7 +6,8 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 import config
 import settings
-import sys
+
+import logging
 
 class GSpreadSheetAdapter:
     def __init__(self, client={}):
@@ -24,8 +26,10 @@ class GSpreadSheetAdapter:
         }
         creds = ServiceAccountCredentials.from_json_keyfile_dict(info, scope)
         gc = gspread.authorize(creds)
+        print("gspread authrozed")
         logging.info("gspread authrozed")
         sheet1_cli = gc.open(config.TECHLISH_SPREAD_SHEET).sheet1
+        print("sheet1 found")
         logging.info("sheet1 found")
         if len(sheet1_cli.col_values(1)) == 0:
             logging.critical('The spreadsheet has no value in A columns.')
@@ -37,3 +41,6 @@ class GSpreadSheetAdapter:
 
     def write_timestamp(self, result):
         self.client.update_acell("E"+result.num, result.created_at)
+
+    def write_timestamp_debug(self):
+        print("debug mode")

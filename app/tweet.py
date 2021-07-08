@@ -1,6 +1,5 @@
+#! /usr/bin/env python
 # coding: utf-8
-
-import logging
 
 class Tweet:
     def __init__(self, content={}):

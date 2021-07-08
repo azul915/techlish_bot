@@ -1,3 +1,6 @@
+#! /usr/bin/env python
+# coding: utf-8
+
 # gspred.py
 FEEDS = "https://spreadsheets.google.com/feeds"
 GOOGLE_DRIVE = "https://www.googleapis.com/auth/drive"

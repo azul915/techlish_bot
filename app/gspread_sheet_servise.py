@@ -1,7 +1,11 @@
+#! /usr/bin/env python
 # coding: utf-8
 
 import random
 import record as rec
+
+import settings
+import logging
 
 import gspread_sheet_adaptor as gs_adaptor
 
@@ -15,6 +19,7 @@ class GSpreadSheetService:
         idx = random.randint(0, len(records)-1)
 
         str_num = str(idx + 1)
+        logging.info(f'\"{records[idx][0]}\" was chosen')
         return rec.Record(\
                 num=str_num,\
                 word=records[idx][0],\
@@ -24,4 +29,7 @@ class GSpreadSheetService:
                 created_at=records[idx][4])
 
     def write_timestamp(self, result):
-        self.adaptor.write_timestamp(result)
+        if settings.DEBUG == "true":
+            self.adaptor.write_timestamp_debug()
+        else:
+            self.adaptor.write_timestamp(result)

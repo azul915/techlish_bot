@@ -1,15 +1,17 @@
+#! /usr/bin/env python
 # coding: utf-8
 
 import logging
 import sys
 
+
 import gspread_sheet_servise as gs_service
 import twitter_service as twi_service
 
 import config
+
 from error import ResponseHasError
 
-# def handle_cloud_functions():
 # for GCP entry point
 def handle_cloud_functions(event, context):
     try:
@@ -27,4 +29,6 @@ def handle_cloud_functions(event, context):
         logging.warning(e.args[0])
         sys.exit()
 
-# handle_cloud_functions()
+if __name__ == "__main__":
+    sys.dont_write_bytecode = True
+    handle_cloud_functions(event=None, context=None)

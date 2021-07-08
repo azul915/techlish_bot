@@ -1,8 +1,9 @@
+#! /usr/bin/env python
 # coding: utf-8
 
 import datetime
 import json
-import sys
+
 import time
 import pytz
 from requests_oauthlib import OAuth1Session
@@ -19,6 +20,10 @@ class TwitterService:
 
     def tweet(self, record):
         t = tweet.Tweet(record)
+        if settings.DEBUG == "true":
+            print("debug mode")
+            return
+
         res = self.client.post(self.endpoint, params = t.content)
 
         res_dict = json.loads(res.text)
@@ -31,4 +36,3 @@ class TwitterService:
         jst_time = utc_time.astimezone(pytz.timezone(config.TIMEZONE))
         jst_str = jst_time.strftime(config.FORMAT)
         return rec.Record(num=record.num, word=record.word, category=record.category, mean=record.mean, supplement=record.supplement, created_at=jst_str)
-
